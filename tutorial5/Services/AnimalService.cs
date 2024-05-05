@@ -1,45 +1,38 @@
-﻿using GakkoHorizontalSlice.Model;
-using GakkoHorizontalSlice.Repositories;
-using tutorial5.Services;
+﻿using tutorial5.Models;
+using tutorial5.Repos;
 
-namespace GakkoHorizontalSlice.Services;
+namespace tutorial5.Services;
 
-public class Animal : IAnimalService
+public class AnimalService : IAnimalService
 {
     private readonly IAnimalRepository _animalRepository;
-    
-    public StudentsService(IStudentsRepository studentsRepository)
+
+    public AnimalService(IAnimalRepository animalRepository)
     {
-        _studentsRepository = studentsRepository;
+        _animalRepository = animalRepository;
     }
-    
-    public IEnumerable<Student> GetStudents()
+    public IEnumerable<Animal> GetAnimals()
     {
-        //Business logic
-        return _studentsRepository.GetStudents();
-    }
-    
-    public int CreateStudent(Student student)
-    {
-        //Business logic
-        return _studentsRepository.CreateStudent(student);
+        return _animalRepository.GetAnimals();
     }
 
-    public Student? GetStudent(int idStudent)
+    public int CreateAnimal(Animal animal)
     {
-        //Business logic
-        return _studentsRepository.GetStudent(idStudent);
+        return _animalRepository.CreateAnimal(animal);
     }
 
-    public int UpdateStudent(Student student)
+    public Animal? GetAnimal(int idAnimal)
     {
-        //Business logic
-        return _studentsRepository.UpdateStudent(student);
+        return _animalRepository.GetAnimal(idAnimal);
     }
 
-    public int DeleteStudent(int idStudent)
+    public int UpdateAnimal(Animal animal)
     {
-        //Business logic
-        return _studentsRepository.DeleteStudent(idStudent);
+        return _animalRepository.UpdateAnimal(animal);
+    }
+
+    public int DeleteAnimal(int idAnimal)
+    {
+        return _animalRepository.DeleteAnimal(idAnimal);
     }
 }

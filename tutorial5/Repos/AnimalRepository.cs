@@ -2,11 +2,11 @@
 using tutorial5.Models;
 using tutorial5.Repos;
 
-namespace GakkoHorizontalSlice.Repositories;
+namespace tutorial5.repos;
 
 public class AnimalRepository : IAnimalRepository
 {
-    private IConfiguration _configuration;
+    private readonly IConfiguration _configuration;
     
     public AnimalRepository(IConfiguration configuration)
     {
@@ -68,7 +68,7 @@ public class AnimalRepository : IAnimalRepository
     
     public int CreateAnimal(Animal animal)
     {
-        using var con = new SqlConnection("_configuration[\"ConnectionStrings:DefaultConnection\"]");
+        using var con = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]);
         con.Open();
         
         using var cmd = new SqlCommand();
@@ -87,7 +87,7 @@ public class AnimalRepository : IAnimalRepository
     
     public int DeleteAnimal(int id)
     {
-        using var con = new SqlConnection("_configuration[\"ConnectionStrings:DefaultConnection\"]");
+        using var con = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]);
         con.Open();
         
         using var cmd = new SqlCommand();
@@ -101,7 +101,7 @@ public class AnimalRepository : IAnimalRepository
 
     public int UpdateAnimal(Animal animal)
     {
-        using var con = new SqlConnection("_configuration[\"ConnectionStrings:DefaultConnection\"]");
+        using var con = new SqlConnection(_configuration["ConnectionStrings:DefaultConnection"]);
         con.Open();
         
         using var cmd = new SqlCommand();
